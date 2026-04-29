@@ -1,0 +1,748 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Izham Bin Haris — CS Student &amp; Technical Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;
+  --bg2:#0d1321;
+  --bg3:#111827;
+  --surface:#141c2e;
+  --surface2:#1a2438;
+  --border:#1e2d47;
+  --accent:#00d4ff;
+  --accent2:#7c3aed;
+  --accent3:#10b981;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --text3:#64748b;
+  --heading-font:'Sora',sans-serif;
+  --body-font:'DM Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body-font);line-height:1.7;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(8,12,20,0.85);border-bottom:1px solid rgba(0,212,255,0.08);transition:all 0.3s}
+.nav-logo{font-family:var(--mono);font-size:1rem;color:var(--accent);letter-spacing:0.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.85rem;color:var(--text2);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width 0.3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all 0.3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:7rem 2rem 4rem}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)}
+.hero-glow{position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(0,212,255,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-20%;right:-10%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(124,58,237,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-content{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);border-radius:50px;padding:0.4rem 1rem;font-family:var(--mono);font-size:0.78rem;color:var(--accent);margin-bottom:2rem;animation:fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both}
+.hero-tag-dot{width:6px;height:6px;background:var(--accent3);border-radius:50%;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)}}
+.hero h1{font-family:var(--heading-font);font-size:clamp(3rem,7vw,6rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.5rem;animation:fadeUp 0.6s 0.1s cubic-bezier(0.16,1,0.3,1) both}
+.hero h1 span{background:linear-gradient(135deg,#00d4ff 0%,#7c3aed 50%,#10b981 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-family:var(--mono);font-size:clamp(0.8rem,1.5vw,0.95rem);color:var(--accent);letter-spacing:0.04em;margin-bottom:1.5rem;animation:fadeUp 0.6s 0.2s cubic-bezier(0.16,1,0.3,1) both}
+.hero-tagline{font-size:clamp(1rem,2vw,1.25rem);color:var(--text2);max-width:560px;line-height:1.7;margin-bottom:2.5rem;animation:fadeUp 0.6s 0.3s cubic-bezier(0.16,1,0.3,1) both}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.6s 0.4s cubic-bezier(0.16,1,0.3,1) both}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:var(--heading-font);font-weight:600;font-size:0.9rem;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:all 0.3s;box-shadow:0 0 30px rgba(0,212,255,0.2)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(0,212,255,0.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:transparent;color:var(--text);font-family:var(--heading-font);font-weight:600;font-size:0.9rem;border-radius:8px;text-decoration:none;border:1px solid var(--border);cursor:pointer;transition:all 0.3s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;animation:fadeUp 0.6s 0.5s cubic-bezier(0.16,1,0.3,1) both}
+.stat-num{font-family:var(--heading-font);font-size:2rem;font-weight:800;color:var(--accent);display:block;line-height:1}
+.stat-label{font-size:0.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.3rem}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;animation:fadeUp 0.6s 0.7s both}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollAnim 2s ease infinite}
+@keyframes scrollAnim{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-family:var(--mono);font-size:0.78rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem}
+.section-tag::before{content:'';display:inline-block;width:30px;height:1px;background:var(--accent)}
+.section-heading{font-family:var(--heading-font);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:1rem}
+.section-heading span{color:var(--accent)}
+.section-sub{color:var(--text2);font-size:1rem;max-width:600px;line-height:1.7}
+
+/* ABOUT */
+#about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
+.about-text p{color:var(--text2);font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem}
+.about-text p strong{color:var(--text);font-weight:600}
+.about-details{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.detail-row{display:flex;align-items:center;gap:1rem;padding:0.75rem 0;border-bottom:1px solid var(--border)}
+.detail-icon{width:36px;height:36px;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.detail-icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.detail-text{font-size:0.9rem;color:var(--text2)}
+.detail-text a{color:var(--accent);text-decoration:none}
+.about-visual{position:relative}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.profile-name{font-family:var(--heading-font);font-size:1.3rem;font-weight:700;margin-bottom:0.25rem}
+.profile-role{font-family:var(--mono);font-size:0.8rem;color:var(--accent);margin-bottom:1.5rem}
+.profile-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{padding:0.3rem 0.75rem;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.15);border-radius:50px;font-size:0.75rem;font-family:var(--mono);color:var(--text2)}
+.achievement-badge{background:var(--surface2);border:1px solid rgba(16,185,129,0.2);border-radius:12px;padding:1rem;margin-top:1rem;display:flex;align-items:center;gap:1rem}
+.badge-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.05));border:1px solid rgba(16,185,129,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.badge-icon svg{width:20px;height:20px;fill:var(--accent3)}
+.badge-text{font-size:0.85rem;color:var(--text);font-weight:600}
+.badge-sub{font-size:0.75rem;color:var(--text3)}
+
+/* EDUCATION */
+#education{background:var(--bg2)}
+.edu-timeline{margin-top:3rem;display:flex;flex-direction:column;gap:1.5rem}
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all 0.3s}
+.edu-card:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.edu-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.edu-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:0.75rem}
+.edu-school{font-family:var(--heading-font);font-size:1.2rem;font-weight:700;color:var(--text)}
+.edu-period{font-family:var(--mono);font-size:0.78rem;color:var(--accent);background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.15);padding:0.3rem 0.75rem;border-radius:50px}
+.edu-degree{color:var(--text2);font-size:0.95rem;margin-bottom:0.5rem}
+.edu-meta{font-family:var(--mono);font-size:0.8rem;color:var(--accent3);margin-top:0.5rem}
+
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;margin-top:3rem;position:relative;overflow:hidden}
+.exp-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,212,255,0.03) 0%,transparent 60%)}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.exp-company{font-family:var(--heading-font);font-size:1.4rem;font-weight:700}
+.exp-company span{color:var(--accent)}
+.exp-period{font-family:var(--mono);font-size:0.78rem;color:var(--accent2);background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);padding:0.3rem 0.75rem;border-radius:50px}
+.exp-roles{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.role-block{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+.role-title{font-family:var(--mono);font-size:0.82rem;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+.role-title::before{content:'>';color:var(--accent2)}
+.role-points{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.role-points li{font-size:0.88rem;color:var(--text2);padding-left:1rem;position:relative}
+.role-points li::before{content:'▸';position:absolute;left:0;color:var(--accent3);font-size:0.75rem}
+
+/* PROJECTS */
+#projects{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:3rem}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all 0.3s;position:relative;overflow:hidden;cursor:default}
+.project-card:hover{transform:translateY(-5px);border-color:rgba(0,212,255,0.25);box-shadow:0 25px 50px rgba(0,0,0,0.4)}
+.project-card.featured{grid-column:span 2;background:linear-gradient(135deg,var(--surface) 0%,rgba(0,212,255,0.03) 100%)}
+.project-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.72rem;padding:0.3rem 0.75rem;border-radius:50px;margin-bottom:1rem;font-weight:500}
+.badge-win{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);color:var(--accent3)}
+.badge-security{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171}
+.badge-infra{background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--accent)}
+.badge-uiux{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);color:#a78bfa}
+.badge-data{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:#fbbf24}
+.project-name{font-family:var(--heading-font);font-size:1.15rem;font-weight:700;margin-bottom:0.75rem;color:var(--text)}
+.project-desc{font-size:0.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.25rem}
+.tech-stack{display:flex;flex-wrap:wrap;gap:0.4rem}
+.tech{font-family:var(--mono);font-size:0.7rem;padding:0.2rem 0.6rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;color:var(--text3)}
+
+/* SKILLS */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.skill-group{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.3s}
+.skill-group:hover{border-color:rgba(0,212,255,0.2);transform:translateY(-3px)}
+.skill-group-title{font-family:var(--heading-font);font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;text-transform:uppercase;letter-spacing:0.06em}
+.skill-group-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.icon-code{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2)}
+.icon-tech{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2)}
+.icon-soft{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
+.skill-group-icon svg{width:16px;height:16px;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.icon-code svg{stroke:var(--accent)}
+.icon-tech svg{stroke:#a78bfa}
+.icon-soft svg{stroke:var(--accent3)}
+.skill-items{display:flex;flex-direction:column;gap:0.6rem}
+.skill-item{display:flex;align-items:center;gap:0.75rem;font-size:0.9rem;color:var(--text2);padding:0.5rem 0}
+.skill-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dot-cyan{background:var(--accent);box-shadow:0 0 8px rgba(0,212,255,0.5)}
+.dot-purple{background:#a78bfa;box-shadow:0 0 8px rgba(167,139,250,0.5)}
+.dot-green{background:var(--accent3);box-shadow:0 0 8px rgba(16,185,129,0.5)}
+
+/* ACHIEVEMENTS & CERTS */
+#achievements{background:var(--bg2)}
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+.ach-list{display:flex;flex-direction:column;gap:1rem}
+.ach-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;transition:all 0.3s}
+.ach-item:hover{border-color:rgba(0,212,255,0.2);transform:translateX(5px)}
+.ach-number{font-family:var(--mono);font-size:0.72rem;color:var(--text3);width:24px;text-align:right;flex-shrink:0}
+.ach-text{font-size:0.9rem;color:var(--text2)}
+.ach-text strong{color:var(--text);display:block;font-weight:600;margin-bottom:0.15rem}
+.cert-list{display:flex;flex-direction:column;gap:0.75rem}
+.cert-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;transition:all 0.3s}
+.cert-item:hover{border-color:rgba(124,58,237,0.3);transform:translateX(5px)}
+.cert-icon{width:36px;height:36px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cert-icon svg{width:16px;height:16px;stroke:#a78bfa;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cert-name{font-size:0.88rem;color:var(--text);font-weight:500}
+.cert-org{font-family:var(--mono);font-size:0.72rem;color:var(--text3)}
+
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-link{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:all 0.3s}
+.contact-link:hover{border-color:rgba(0,212,255,0.3);transform:translateX(5px)}
+.contact-link-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-email{background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2)}
+.ci-phone{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
+.ci-linkedin{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2)}
+.ci-github{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)}
+.contact-link-icon svg{width:18px;height:18px;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ci-email svg{stroke:var(--accent)}
+.ci-phone svg{stroke:var(--accent3)}
+.ci-linkedin svg{stroke:#a78bfa}
+.ci-github svg{stroke:var(--text2)}
+.contact-link-text{font-size:0.9rem;font-weight:500}
+.contact-link-meta{font-family:var(--mono);font-size:0.75rem;color:var(--text3);margin-top:0.2rem}
+form{display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.5rem}
+label{font-size:0.8rem;font-weight:600;color:var(--text2);letter-spacing:0.04em;text-transform:uppercase}
+input,textarea{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.85rem 1rem;color:var(--text);font-family:var(--body-font);font-size:0.9rem;transition:all 0.3s;outline:none;resize:none;width:100%}
+input::placeholder,textarea::placeholder{color:var(--text3)}
+input:focus,textarea:focus{border-color:rgba(0,212,255,0.4);box-shadow:0 0 0 3px rgba(0,212,255,0.08)}
+.btn-submit{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:var(--heading-font);font-weight:600;font-size:0.9rem;padding:1rem 2rem;border:none;border-radius:8px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;gap:0.5rem;justify-content:center}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,212,255,0.25)}
+.btn-submit svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--mono);font-size:0.9rem;color:var(--accent)}
+.footer-text{font-size:0.82rem;color:var(--text3)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);flex-direction:column;padding:2rem;gap:1.5rem}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:flex}
+  .hero{padding:7rem 1.5rem 4rem}
+  .hero-stats{gap:1.5rem}
+  .about-grid,.contact-grid,.ach-grid{grid-template-columns:1fr}
+  .exp-roles{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-column:span 1}
+  .form-row{grid-template-columns:1fr}
+  section{padding:4rem 1.5rem}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+</style>
+<style id="htmlpub-breakpoint-visibility">@media (max-width: 390px) { .hp-hide-mobile { display: none !important; } }
+@media (min-width: 391px) and (max-width: 768px) { .hp-hide-tablet { display: none !important; } }
+@media (min-width: 769px) { .hp-hide-desktop { display: none !important; } }</style></head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">izham.dev</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid" style=""></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2" style=""></div>
+  <div class="hero-content" style="">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Available for opportunities
+    </div>
+    <h1>Muhammad<br><span>Izham</span> Haris</h1>
+    <p class="hero-subtitle">Computer Science Student &nbsp;·&nbsp; SOC Analyst &nbsp;·&nbsp; Full Stack Developer &nbsp;·&nbsp; IoT Enthusiast</p>
+    <p class="hero-tagline">Passionate about data integrity, cybersecurity, and building scalable IoT systems.</p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h6l2 3H3V3zM3 6v15h18V6H3z"></path></svg>
+        View Projects
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        Contact Me
+      </a>
+      <a href="#" class="btn-secondary" download="">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7,10 12,15 17,10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Resume
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">3+</span>
+        <span class="stat-label">Years Study</span>
+      </div>
+      <div>
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div>
+        <span class="stat-num">3.98</span>
+        <span class="stat-label">Matriculation GPA</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="">
+  <div class="section-inner">
+    <div class="section-tag">Who I Am</div>
+    <h2 class="section-heading">Building at the <span>intersection</span><br>of code and infrastructure</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a <strong>Computer Science student</strong> majoring in Computing Infrastructure at Universiti Sains Malaysia, currently completing my internship at BitRanger where I work across SOC analysis, digital forensics, and full-stack development.</p>
+        <p>My passion lies at the intersection of <strong>cybersecurity and IoT systems</strong>. Whether I'm monitoring SIEM dashboards for threats or architecting robotic automation pipelines, I approach every problem with the same discipline I developed as a <strong>PALAPES Army Officer Cadet</strong> — precision, accountability, and resilience under pressure.</p>
+        <p>I believe the most impactful technology is built on a foundation of <strong>data integrity and security-first thinking</strong>. That conviction drives everything I build.</p>
+        <div class="about-details">
+          <div class="detail-row">
+            <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+            <span class="detail-text">Seri Manjung, Perak, Malaysia</span>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+            <span class="detail-text"><a href="mailto:mizham003@gmail.com">mizham003@gmail.com</a></span>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+            <span class="detail-text">+6017-5266164</span>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></div>
+            <span class="detail-text"><a href="https://www.linkedin.com/in/izhamharis27" target="_blank">linkedin.com/in/izhamharis27</a></span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <div class="about-card">
+          <div class="profile-name">Muhammad Izham Bin Haris</div>
+          <div class="profile-role">// CS Student &amp; Aspiring Technical Assistant</div>
+          <div class="profile-tags">
+            <span class="tag">SOC Analysis</span>
+            <span class="tag">Full Stack Dev</span>
+            <span class="tag">IoT Systems</span>
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Digital Forensics</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Cloud Deployment</span>
+            <span class="tag">PALAPES Officer Cadet</span>
+          </div>
+          <div class="achievement-badge">
+            <div class="badge-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            </div>
+            <div>
+              <div class="badge-text">2nd Runner Up</div>
+              <div class="badge-sub">Advantech AIoT InnoWorks 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-tag">Academic Background</div>
+    <h2 class="section-heading">Education &amp;<br><span>Qualifications</span></h2>
+    <div class="edu-timeline">
+      <div class="edu-card reveal">
+        <div class="edu-header">
+          <div class="edu-school">Universiti Sains Malaysia</div>
+          <span class="edu-period">2022 – Present</span>
+        </div>
+        <div class="edu-degree">Bachelor of Computer Science (Hons), Computing Infrastructure</div>
+        <div class="edu-meta">Undergraduate · Computing Infrastructure Major</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-header">
+          <div class="edu-school">Kolej MARA Kulim</div>
+          <span class="edu-period">2021 – 2022</span>
+        </div>
+        <div class="edu-degree">Matriculation — Science Stream</div>
+        <div class="edu-meta">CGPA: 3.98 / 4.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-tag">Work History</div>
+    <h2 class="section-heading">Where I've been<br><span>sharpening my edge</span></h2>
+    <div class="exp-card reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-company"><span>BitRanger</span> — Internship</div>
+          <div style="font-size:0.85rem;color:var(--text3);font-family:var(--mono);margin-top:0.25rem">Full-time · On-site</div>
+        </div>
+        <span class="exp-period">Mar – Sept 2025</span>
+      </div>
+      <div class="exp-roles">
+        <div class="role-block">
+          <div class="role-title">SOC Analyst</div>
+          <ul class="role-points">
+            <li>Monitored SIEM platforms for threat detection</li>
+            <li>Handled incident response and escalation workflows</li>
+            <li>Conducted proactive threat hunting across logs</li>
+          </ul>
+        </div>
+        <div class="role-block">
+          <div class="role-title">Digital Forensics</div>
+          <ul class="role-points">
+            <li>Led investigation workflows on compromised systems</li>
+            <li>Prepared detailed forensic reports for stakeholders</li>
+            <li>Preserved chain of custody in evidence handling</li>
+          </ul>
+        </div>
+        <div class="role-block">
+          <div class="role-title">Full Stack Developer</div>
+          <ul class="role-points">
+            <li>Built internal security dashboards from scratch</li>
+            <li>Tech stack: HTML, CSS, JavaScript, Python</li>
+            <li>Delivered data visualization for security ops teams</li>
+          </ul>
+        </div>
+        <div class="role-block">
+          <div class="role-title">Security Assessment</div>
+          <ul class="role-points">
+            <li>Performed vulnerability assessment on systems</li>
+            <li>Gained exposure to red team methodologies</li>
+            <li>Documented findings and remediation strategies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-tag">Portfolio</div>
+    <h2 class="section-heading">Things I've <span>built</span></h2>
+    <div class="projects-grid">
+      <div class="project-card featured reveal">
+        <span class="project-badge badge-win">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          2nd Runner Up · Advantech AIoT InnoWorks 2025
+        </span>
+        <div class="project-name">The Dilution — AIoT Medical System</div>
+        <div class="project-desc">An award-winning AIoT platform for robotic medication dilution automation. Integrates facial authentication, robotic arm control, a full-stack dashboard, digital twin simulation in Unity, and cloud deployment — all in one production-grade system.</div>
+        <div class="tech-stack">
+          <span class="tech">myCobot 280 Pi</span>
+          <span class="tech">Jetson Orin Nano</span>
+          <span class="tech">InsightFace</span>
+          <span class="tech">React</span>
+          <span class="tech">Node.js</span>
+          <span class="tech">MySQL</span>
+          <span class="tech">Unity (Digital Twin)</span>
+          <span class="tech">Docker</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-badge badge-infra">Infrastructure</span>
+        <div class="project-name">Raspberry Pi Stress Test Environment</div>
+        <div class="project-desc">A performance benchmarking suite for Raspberry Pi hardware. Tests CPU, RAM, and network throughput with real-time dashboard visualization using iperf3 integration.</div>
+        <div class="tech-stack">
+          <span class="tech">Raspberry Pi</span>
+          <span class="tech">Python</span>
+          <span class="tech">iperf3</span>
+          <span class="tech">Dashboard</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-badge badge-security">Security</span>
+        <div class="project-name">ARP Spoofing Tool</div>
+        <div class="project-desc">An educational cybersecurity tool demonstrating ARP spoofing attack vectors. Built for academic purposes to understand and defend against MITM attacks on local networks.</div>
+        <div class="tech-stack">
+          <span class="tech">Python</span>
+          <span class="tech">Scapy</span>
+          <span class="tech">Networking</span>
+          <span class="tech">Linux</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <span class="project-badge badge-data">Database</span>
+        <div class="project-name">Fund Investment Database System</div>
+        <div class="project-desc">A structured database management system for fund investment tracking. Built on Oracle APEX with a strong emphasis on data integrity, relational schema design, and query optimization.</div>
+        <div class="tech-stack">
+          <span class="tech">Oracle APEX</span>
+          <span class="tech">SQL</span>
+          <span class="tech">Data Integrity</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <span class="project-badge badge-uiux">UI/UX Design</span>
+        <div class="project-name">MediMinder App</div>
+        <div class="project-desc">A Figma-designed medication reminder application tailored for elderly users. Focused on accessibility, legibility, and intuitive interaction patterns for healthcare use cases.</div>
+        <div class="tech-stack">
+          <span class="tech">Figma</span>
+          <span class="tech">UI/UX</span>
+          <span class="tech">Accessibility</span>
+          <span class="tech">Prototyping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-tag">Capabilities</div>
+    <h2 class="section-heading">What I bring<br>to the <span>table</span></h2>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">
+          <div class="skill-group-icon icon-code">
+            <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          Programming
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot dot-cyan"></span>Python</div>
+          <div class="skill-item"><span class="skill-dot dot-cyan"></span>C++</div>
+          <div class="skill-item"><span class="skill-dot dot-cyan"></span>Java</div>
+          <div class="skill-item"><span class="skill-dot dot-cyan"></span>MySQL / SQL</div>
+          <div class="skill-item"><span class="skill-dot dot-cyan"></span>Assembly Language</div>
+          <div class="skill-item"><span class="skill-dot dot-cyan"></span>Linux / Bash</div>
+        </div>
+      </div>
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="skill-group-title">
+          <div class="skill-group-icon icon-tech">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          Technical
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot dot-purple"></span>Full Stack Development</div>
+          <div class="skill-item"><span class="skill-dot dot-purple"></span>IoT Infrastructure</div>
+          <div class="skill-item"><span class="skill-dot dot-purple"></span>Cybersecurity &amp; SIEM</div>
+          <div class="skill-item"><span class="skill-dot dot-purple"></span>Embedded Systems</div>
+          <div class="skill-item"><span class="skill-dot dot-purple"></span>Cloud Deployment (Docker)</div>
+          <div class="skill-item"><span class="skill-dot dot-purple"></span>Digital Forensics</div>
+        </div>
+      </div>
+      <div class="skill-group reveal reveal-delay-2">
+        <div class="skill-group-title">
+          <div class="skill-group-icon icon-soft">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          Leadership
+        </div>
+        <div class="skill-items">
+          <div class="skill-item"><span class="skill-dot dot-green"></span>Leadership &amp; Team Management</div>
+          <div class="skill-item"><span class="skill-dot dot-green"></span>Event Management (300+ pax)</div>
+          <div class="skill-item"><span class="skill-dot dot-green"></span>Penetration Testing (Basic)</div>
+          <div class="skill-item"><span class="skill-dot dot-green"></span>Project Documentation</div>
+          <div class="skill-item"><span class="skill-dot dot-green"></span>Military Discipline (PALAPES)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS & CERTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-tag">Recognition</div>
+    <h2 class="section-heading">Achievements &amp;<br><span>Certifications</span></h2>
+    <div class="ach-grid">
+      <div>
+        <div style="font-family:var(--mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem">// Achievements</div>
+        <div class="ach-list">
+          <div class="ach-item reveal">
+            <span class="ach-number">01</span>
+            <div class="ach-text">
+              <strong>2nd Runner Up — Advantech AIoT InnoWorks 2025</strong>
+              National-level competition for IoT innovation
+            </div>
+          </div>
+          <div class="ach-item reveal reveal-delay-1">
+            <span class="ach-number">02</span>
+            <div class="ach-text">
+              <strong>President, PALAPES Recreation Club</strong>
+              Led club operations and inter-unit events at USM
+            </div>
+          </div>
+          <div class="ach-item reveal reveal-delay-2">
+            <span class="ach-number">03</span>
+            <div class="ach-text">
+              <strong>Head of Major University Events</strong>
+              Organised and led events with 300+ participants
+            </div>
+          </div>
+          <div class="ach-item reveal reveal-delay-3">
+            <span class="ach-number">04</span>
+            <div class="ach-text">
+              <strong>PALAPES Army Officer Cadet</strong>
+              Military leadership training and discipline programme
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:0.78rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem">// Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item reveal">
+            <div class="cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+            <div>
+              <div class="cert-name">Google Cybersecurity Professional Certificate</div>
+              <div class="cert-org">Google / Coursera</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-1">
+            <div class="cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+            <div>
+              <div class="cert-name">Microsoft AI Teach: Data Analytics</div>
+              <div class="cert-org">Microsoft</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-2">
+            <div class="cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+            <div>
+              <div class="cert-name">Advantech Wise-PaaS Certification</div>
+              <div class="cert-org">Advantech</div>
+            </div>
+          </div>
+          <div class="cert-item reveal reveal-delay-3">
+            <div class="cert-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+            <div>
+              <div class="cert-name">SOI Asia Internet Courses</div>
+              <div class="cert-org">SOI Asia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Get in Touch</div>
+    <h2 class="section-heading">Let's <span>work together</span></h2>
+    <p class="section-sub" style="margin-bottom:0">Open to internships, collaborations, and technical assistant roles. Reach out — I respond promptly.</p>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a href="mailto:mizham003@gmail.com" class="contact-link">
+          <div class="contact-link-icon ci-email">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">mizham003@gmail.com</div>
+            <div class="contact-link-meta">Email · Best way to reach me</div>
+          </div>
+        </a>
+        <a href="tel:+60175266164" class="contact-link">
+          <div class="contact-link-icon ci-phone">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">+6017-5266164</div>
+            <div class="contact-link-meta">Phone / WhatsApp</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/izhamharis27" target="_blank" class="contact-link">
+          <div class="contact-link-icon ci-linkedin">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">linkedin.com/in/izhamharis27</div>
+            <div class="contact-link-meta">LinkedIn Profile</div>
+          </div>
+        </a>
+        <a href="https://github.com/" target="_blank" class="contact-link">
+          <div class="contact-link-icon ci-github">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </div>
+          <div>
+            <div class="contact-link-text">GitHub</div>
+            <div class="contact-link-meta">Projects &amp; open source</div>
+          </div>
+        </a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <form name="contact-form" data-success-message="Got it — I'll get back to you soon!">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="full_name">Full Name</label>
+              <input type="text" id="full_name" name="full_name" placeholder="Jane Smith" required="">
+            </div>
+            <div class="form-group">
+              <label for="email_address">Email</label>
+              <input type="email" id="email_address" name="email_address" placeholder="jane@example.com" required="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Internship opportunity / Collaboration / Project">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell me what you have in mind..." required=""></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            Send Message
+            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">izham.dev</span>
+    <span class="footer-text">Muhammad Izham Bin Haris · Seri Manjung, Perak, Malaysia</span>
+    <span class="footer-text">Built with precision &amp; passion · 2025</span>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body></html>

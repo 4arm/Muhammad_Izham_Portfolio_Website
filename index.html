@@ -743,6 +743,47 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form submission handler
+document.querySelector('form[name="contact-form"]').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('.btn-submit');
+  const originalBtnText = submitBtn.innerHTML;
+  
+  // Disable button and show loading
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Sending...';
+  
+  const formData = {
+    full_name: form.full_name.value,
+    email_address: form.email_address.value,
+    subject: form.subject.value,
+    message: form.message.value
+  };
+  
+  try {
+    const response = await fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    
+    const result = await response.json();
+    
+    if (response.ok) {
+      alert('Message sent successfully! I\'ll get back to you soon.');
+      form.reset();
+    } else {
+      alert('Failed to send message: ' + (result.error || 'Unknown error'));
+    }
+  } catch (error) {
+    alert('Error: ' + error.message);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
+  }
+});
 </script>
 
 </body></html>

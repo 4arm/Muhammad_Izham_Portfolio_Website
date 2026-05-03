@@ -137,6 +137,12 @@ section{padding:6rem 2rem}
 .project-card.featured{grid-column:span 2;background:linear-gradient(135deg,var(--surface) 0%,rgba(0,212,255,0.03) 100%)}
 .project-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.72rem;padding:0.3rem 0.75rem;border-radius:50px;margin-bottom:1rem;font-weight:500}
 .badge-win{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);color:var(--accent3)}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:3rem}
+.gallery-item{background:var(--surface);border:1px solid var(--border);border-radius:20px;min-height:260px;display:flex;align-items:center;justify-content:center;padding:1.5rem;transition:transform 0.3s,border-color 0.3s}
+.gallery-item:hover{transform:translateY(-3px);border-color:rgba(0,212,255,0.2)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;border-radius:18px}
+.gallery-placeholder{color:var(--text2);font-size:0.95rem;line-height:1.6;text-align:center;max-width:220px}
+
 .badge-security{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171}
 .badge-infra{background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--accent)}
 .badge-uiux{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);color:#a78bfa}
@@ -260,6 +266,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 2
     <li><a href="#education">Education</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#appendix">Appendix</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -651,6 +658,29 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 2
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- APPENDIX -->
+<section id="appendix">
+  <div class="section-inner">
+    <div class="section-tag">Gallery</div>
+    <h2 class="section-heading">Image <span>Gallery</span></h2>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <div class="gallery-placeholder"> <img src="img\arduino mega 2560.jpg" alt=""></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">Add <code>img/gallery-2.jpg</code></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">Add <code>img/gallery-3.jpg</code></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder">Add <code>img/gallery-4.jpg</code></div>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top:1.5rem;">Drop your gallery images into the <code>img/</code> folder and replace each placeholder with an <code>&lt;img&gt;</code> tag when you're ready.</p>
   </div>
 </section>
 
